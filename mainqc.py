@@ -31,7 +31,13 @@ def home():
     return Response(content, mimetype="text/html")
 @app.route('/category', methods=['GET'])
 def search_by_category():
-    result = get_surah_in_categorie(int(request.args['id']))
+    id=None
+    try:
+        id=int(request.args['id'])
+    except:
+        return ("invalid id "+str(request.args.get('id') )) , 404
+
+    result = get_surah_in_categorie(id)
     return jsonify(result)
 @app.route('/search', methods=['GET'])
 def search():
