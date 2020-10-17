@@ -2,7 +2,7 @@ import os
 
 import flask
 from flask import request, jsonify, Response
-
+from waitress import serve
 from app_impl import get_categories, do_search, get_surah_in_categorie
 
 app = flask.Flask(__name__)
@@ -54,4 +54,6 @@ print("server ...")
 
 if __name__ == '__main__':
     print("running server")
-    app.run(debug=True, host='0.0.0.0',port=4000)
+    app.secret_key = "i am bad"
+    serve(app,listen='*:4000')
+    #app.run(debug=True, host='0.0.0.0',port=4000)
