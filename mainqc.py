@@ -26,6 +26,9 @@ def Home():
 @app.route('/Search', methods=['GET'])
 def Search():
     return index()
+@app.route('/Search/:s', methods=['GET'])
+def Searchs(s):
+    return index()
 @app.route('/home', methods=['GET'])
 def home():
     print("index")
