@@ -20,13 +20,19 @@ def get_file(filename):  # pragma: no cover
         return open(src).read()
     except IOError as exc:
         return str(exc)
+@app.route('/Home', methods=['GET'])
+def Home():
+    return index()
+@app.route('/Search', methods=['GET'])
+def Search():
+    return index()
 @app.route('/home', methods=['GET'])
-def index():
+def home():
     print("index")
     result=get_categories()
     return jsonify(result)
 @app.route('/', methods=['GET'])
-def home():
+def index():
     content = get_file('index.html')
     return Response(content, mimetype="text/html")
 @app.route('/category', methods=['GET'])
